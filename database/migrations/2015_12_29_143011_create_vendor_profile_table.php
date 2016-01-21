@@ -19,7 +19,6 @@ class CreateVendorProfileTable extends Migration
             $table->string('profile_photo')->nullable();
             $table->text('phones')->nullable(); //json
             $table->text('addresses')->nullable(); //json
-            $table->text('social')->nullable();
             $table->timestamps();
         });
     }

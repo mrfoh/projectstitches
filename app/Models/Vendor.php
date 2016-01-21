@@ -36,7 +36,9 @@
 					'profile_photo' => $this->profile->profile_photo,
 					'phones' => $this->profile->phones,
 					'addresses' => $this->profile->addresses,
-					'social' => $this->profile->social
+					'facebook' => $this->profile->facebook,
+					'twitter' => $this->profile->twitter,
+					'instagram' => $this->profile->instagram
 				] : null,
 				'created_at' => $this->created_at,
 				'updated_at' => $this->updated_at

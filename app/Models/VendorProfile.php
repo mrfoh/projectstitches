@@ -8,7 +8,7 @@
 
 		protected $table = "vendor_profiles";
 
-		protected $fillable = ['vendor_id','profile_photo','phones','addresses','social'];
+		protected $fillable = ['vendor_id','profile_photo','phones','addresses','facebook','twitter','instagram'];
 
 		protected $touches = ['vendor'];
 
@@ -24,10 +24,6 @@
 			$this->attributes['addresses'] = json_encode($value);
 		}
 
-		public function setSocialAttribute($value) {
-			$this->attributes['social'] = json_encode($value);
-		}
-
 		public function getPhonesAttribute($value) {
 			return json_decode($value, true);
 		}
@@ -36,16 +32,14 @@
 			return json_decode($value, true);
 		}
 
-		public function getSocialAttribute($value) {
-			return json_decode($value, true);
-		}
-
 		public function transform() {
 			return [
 				'profile_photo' => $this->profile_photo,
 				'phones' => $this->phones,
 				'addresses' => $this->addresses,
-				'social' => $this->social
+				'facebook' => $this->facebook,
+				'twitter' => $this->twitter,
+				'instagram' => $this->instagram
 			];
 		}
 	}
