@@ -6,7 +6,7 @@
 
 	class Variant extends Model {
 
-	    protected $fillable = ['product_id','options','price','qty','track'];
+	    protected $fillable = ['product_id','name','value','parent_id','price','qty','track'];
 
 	    protected $touches = ['product'];
 

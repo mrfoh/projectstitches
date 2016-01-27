@@ -22,7 +22,10 @@ class VariantTransformer extends TransformerAbstract
     {
         return [
             'id'         => (int) $model->id,
-            'options' => $model->options,
+            'name' => $model->name,
+            'value' => $model->value,
+            'is_parent' => (is_null($model->parent_id)) ? true : false,
+            'children' => ($model->children) ? $model->children : [],
             'qty' => (int) $model->qty,
             'track' => (bool) $model->track,
             'created_at' => $model->created_at,
