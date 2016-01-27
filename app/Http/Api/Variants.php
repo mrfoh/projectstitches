@@ -23,7 +23,8 @@
 
 		public function create(Request $request, $id) {
 			$this->validate($request, [
-				'options' => 'array',
+				'name' => 'required|in:color,size,material',
+				'parent_id' => 'exists:variants,id',
 				'price' => 'integer',
 				'qty' => 'integer'
 			]);
@@ -40,7 +41,7 @@
 			$product = $products->find($id);
 			
 			$this->validate($request, [
-				'options' => 'array',
+				'name' => 'in:color,size,material',
 				'price' => 'integer',
 				'qty' => 'integer'
 			]);

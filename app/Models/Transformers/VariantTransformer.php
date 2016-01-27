@@ -24,7 +24,7 @@ class VariantTransformer extends TransformerAbstract
             'id'         => (int) $model->id,
             'options' => $model->options,
             'qty' => (int) $model->qty,
-            'track' => (bool) $model->tracl,
+            'track' => (bool) $model->track,
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];

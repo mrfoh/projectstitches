@@ -69,7 +69,7 @@
 	        }
 
 	        // all good so return the token
-	        return response()->json(compact('token','vendor'));
+	        return response()->json(compact('token','user','vendor'));
 		}
 
 		/**
@@ -83,7 +83,7 @@
 			]);
 
 			//user credentials
-			$credentials = $request->only('email','password');
+			$credentials = $request->only('name','email','password');
 			$credentials['password'] = \Hash::make($credentials['password']);
 
 			//create user
@@ -102,7 +102,7 @@
 	        }
 
 	        // all good so return the token
-	        return response()->json(compact('token'));
+	        return response()->json(compact('token', 'user'));
 		}
 
 		/*

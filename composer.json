@@ -14,7 +14,8 @@
         "anahkiasen/underscore-php": "^2.0",
         "zackkitzmiller/tiny": "1.2.0",
         "gloudemans/shoppingcart": "~1.3",
-        "vinkla/hashids": "^2.2"
+        "vinkla/hashids": "^2.2",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

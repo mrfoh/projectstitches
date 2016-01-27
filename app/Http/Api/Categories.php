@@ -28,7 +28,7 @@
 		**/
 		public function index(Request $request) {
 			//models per page
-			$perPage = $request->input('perpage', 20);
+			$perPage = $request->input('perpage', 30);
 
 			//segment
 			$segment = $request->input('segment', null);

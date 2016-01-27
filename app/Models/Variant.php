@@ -10,16 +10,19 @@
 
 	    protected $touches = ['product'];
 
-	    public function setOptionsAttribute($value) {
-	        $this->attributes['options'] = json_encode($value);
-	    }
-
-	    public function getOptionsAttribute($value) {
-	    	return json_decode($value, true);
+	    public function setTrackAttribute($value) {
+	    	$this->attributes['track'] = (int) $value;
 	    }
 
 	    public function product() {
 	    	return $this->belongsTo('\App\Models\Product');
 	    }
 
+	    public function children() {
+	    	return $this->hasMany('\App\Models\Variant','parent_id');
+	    }
+
+	    public function parent() {
+	    	return $this->belongsTo('\App\Models\Variant','parent_id');
+	    }
 	}
