@@ -9,7 +9,17 @@ Route::group(['prefix' => "api"], function() {
 
 		Route::post('auth', 'Accounts@auth');
 		Route::post('create', 'Accounts@create');
+		Route::post('changepassword', 'Accounts@changePassword');
 		Route::get('logout', 'Accounts@logout');
+	});
+
+	//Addresses
+	Route::group(['prefix' => "addresses"], function() {
+
+		Route::get('{id}/default', 'Addresses@makeDefault');
+		Route::put('{id}', 'Addresses@update');
+		Route::get('{id}', 'Addresses@read');
+		Route::delete('{id}', 'Addresses@delete');
 	});
 
 	//Carts
@@ -17,7 +27,7 @@ Route::group(['prefix' => "api"], function() {
 
 		Route::delete('{rowid}', 'Carts@remove');
 		Route::get('/', 'Carts@get');
-		Route::put('/', 'Carts@put');
+		Route::post('/', 'Carts@put');
 	});
 
 	//Categories
@@ -58,7 +68,9 @@ Route::group(['prefix' => "api"], function() {
 	//Users
 	Route::group(['prefix' => "users"], function() {
 
-		//Route::get('{id}/cart', 'Carts@user');
+		Route::post('{id}/addresses', 'Addresses@create');
+		Route::get('{id}/addresses', 'Addresses@user');
+		Route::put('{id}/profile', 'Users@update');
 	});
 
 	//Vendors

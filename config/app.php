@@ -164,7 +164,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
-        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Moltin\Cart\CartServiceProvider::class,
         Vinkla\Hashids\HashidsServiceProvider::class
 
     ],
@@ -215,7 +215,7 @@ return [
         'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory'=> Tymon\JWTAuth\Facades\JWTFactory::class,
         'Image'     => Intervention\Image\Facades\Image::class,
-        'Cart'      => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Cart'      => Moltin\Cart\Facade::class,
         'Hashids' => Vinkla\Hashids\Facades\Hashids::class
     ],
 

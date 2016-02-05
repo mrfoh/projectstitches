@@ -17,15 +17,6 @@
 			$this->middleware('jwt.auth');
 
 			$this->products = $products;
-
-			Cart::associate('Product','App\Models');
-		}
-
-		protected function getInstance() {
-			$user = JWTAuth::parseToken()->authenticate();
-			$instance = "user.".$user->id;
-
-			return $instance;
 		}
 
 		/**
@@ -45,13 +36,11 @@
 			$productid = $request->input('product_id');
 			$qty = $request->input('qty');
 
-			$this->products->skipPresenter();
-			$product = $this->products->find($productid);
-			$name = $product->name;
+			$product = $this->products->skipPresenter()->find($productid);
 
-			Cart::instance($this->getInstance)->add($productid, $product->name, $qty, $product->price);
+			Cart::insert(['id' => $product->id, 'name' => $product->name, 'quantity' => $qty, 'price' => $product->price]);
 
-			return Cart::content();
+			return Cart::contents(true);
 		}	
 
 		/**

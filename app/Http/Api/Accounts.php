@@ -2,6 +2,7 @@
 	namespace App\Http\Api;
 
 	use App\Http\Controllers\Controller;
+	use App\Http\Api\Traits\RequestUser;
 	use Illuminate\Http\Request;
 	use JWTAuth;
 	use Auth;
@@ -10,10 +11,13 @@
 
 	class Accounts extends Controller {
 
+		use RequestUser;
+
 		protected $users;
 
 		public function __construct(Users $users) {
 			$this->users = $users;
+			$this->middleware('jwt.auth', ['only' => ['changePassword']]);
 		}
 
 		private function customClaims($user, $request, $vendor = false) {
@@ -103,6 +107,26 @@
 
 	        // all good so return the token
 	        return response()->json(compact('token', 'user'));
+		}
+
+		public function changePassword(Request $request) {
+			//validate request
+			$this->validate($request, [
+				'current' => 'required',
+				'update' => 'required|min:6'
+			]);
+
+			//user
+			$user = $this->requestUser();
+
+			//check current password
+			if(!\Hash::check($request->input('current'), $user->password)) {
+				return response()->json(['current' => ['Incorrect password']], 422);
+			}
+
+			$this->users->update(['password' => \Hash::make($request->input('update'))], $user->id);
+
+			return response()->json(['message'=>"Password change successful"], 200);
 		}
 
 		/*
