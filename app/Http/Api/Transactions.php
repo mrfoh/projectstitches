@@ -42,6 +42,13 @@
 
 		public function update(Request $request, $reference) {
 
+			$transaction = $this->repo->skipPresenter()->byReference($reference);
+
+			$attributes = $request->all();
+
+			$update = $this->repo->skipPresenter(false)->update($attributes, $transaction->id);
+
+			return $update;
 		}
 
 		public function completed(Request $request) {
