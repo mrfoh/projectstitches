@@ -47,10 +47,14 @@
 		public function completed(Request $request) {
 
 			$reference = $request->input('trxref');
+			$update = NULL;
 
-			$transaction = $this->repo->skipPresenter()->byReference($reference);
+			if($reference) {
 
-			$update = $this->repo->update(['status'=>"successful"], $transaction->id);
+				$transaction = $this->repo->skipPresenter()->byReference($reference);
+
+				$update = $this->repo->update(['status'=>"successful"], $transaction->id);
+			}
 
 			return view('transactioncomplete', ['transaction' => $update]);
 		}
