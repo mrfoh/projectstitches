@@ -153,9 +153,9 @@
 
 		public function deleteMedia(ImageRepo $imageCollection, $id, $mid) {
 			$product = $this->products->skipPresenter()->find($id);
-			$image = $imageCollection->skipPresenter()->find($mid);
+			$image = $imageCollection->skipPresenter()->find(id($mid));
 
-			$imageCollection->delete($mid);
+			$imageCollection->delete(id($mid));
 
 			return response()->json(['message' => "Image deleted"], 200);
 		}

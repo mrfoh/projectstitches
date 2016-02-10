@@ -21,7 +21,7 @@ class ImageTransformer extends TransformerAbstract
     public function transform(Image $model)
     {
         return [
-            'id'         => (int) $model->id,
+            'id'         => $model->id,
             'path'       => config('app.url')."/".$model->path,
             'size'       => $model->size,
             'featured'    => (bool) $model->featured,

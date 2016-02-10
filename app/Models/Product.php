@@ -2,10 +2,11 @@
 	namespace App\Models;
 
 	use Illuminate\Database\Eloquent\Model;
+	use App\Models\Traits\HashId;
 
 	class Product extends Model {
 
-		protected $fillable = ['name','vendor_id','category_id','description','price','tailored','publish'];
+		protected $fillable = ['name','vendor_id', 'category_id', 'description', 'price', 'tailored', 'publish'];
 
 	    public function setPriceAttribute($value)
 	    {

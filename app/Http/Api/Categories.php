@@ -117,7 +117,7 @@
 		**/
 		public function update(Request $request, $id) {
 			//check for existence of model
-			$check = $this->categories->find($id);
+			$check = $this->categories->skipPresenter()->find($id);
 
 			//validate request
 			$this->validate($request, [

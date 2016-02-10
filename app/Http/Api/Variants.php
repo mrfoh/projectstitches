@@ -18,7 +18,7 @@
 
 		public function get($id) {
 
-			return $this->variants->findWhere(['product_id'=>$id]);
+			return $this->variants->findWhere(['product_id' => $id]);
 		}
 
 		public function create(Request $request, $id) {
@@ -55,7 +55,7 @@
 
 		public function delete($id, $vid) {
 			//check
-			$check = $this->variants->find($vid);
+			$check = $this->variants->skipPresenter()->find($vid);
 			//delete
 			$this->variants->delete($vid);
 

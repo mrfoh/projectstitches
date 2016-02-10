@@ -5,7 +5,7 @@
 	use Prettus\Repository\Contracts\Transformable;
 
 	class VendorProfile extends Model implements Transformable {
-
+		
 		protected $table = "vendor_profiles";
 
 		protected $fillable = ['vendor_id','profile_photo','phones','addresses','facebook','twitter','instagram'];

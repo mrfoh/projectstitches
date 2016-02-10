@@ -87,7 +87,7 @@
 			]);
 
 			//user credentials
-			$credentials = $request->only('name','email','password');
+			$credentials = $request->only('first_name','last_name','email','password');
 			$credentials['password'] = \Hash::make($credentials['password']);
 
 			//create user

@@ -38,9 +38,9 @@ return [
     'connections' => [
 
         'main' => [
-            'salt' => 'your-salt-string',
-            'length' => 'your-length-integer',
-            'alphabet' => 'your-alphabet-string',
+            'salt' => 'kepongi4twg8',
+            'length' => 8,
+            'alphabet' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVZXYZ01234567890',
         ],
 
         'alternative' => [

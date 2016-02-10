@@ -15,7 +15,7 @@
 		public function transform() {
 			
 			return [
-				'id' => (int) $this->id,
+				'id' => $this->id,
 				'segment' => $this->segment,
 				'name' => $this->name,
 				'slug' => $this->slug,

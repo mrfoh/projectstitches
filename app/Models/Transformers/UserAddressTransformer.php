@@ -21,7 +21,7 @@ class UserAddressTransformer extends TransformerAbstract
     public function transform(UserAddress $model)
     {
         return [
-            'id'         => (int) $model->id,
+            'id'         => $model->id,
             'user_id'   => $model->user_id,
             'name' => $model->name,
             'contact_name' => $model->contact_name,

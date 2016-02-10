@@ -2,8 +2,8 @@
 /*
 * Api Endpoints
 */
-Route::group(['prefix' => "api"], function() {
 
+Route::group(['prefix' => "api"], function() {
 	//Accounts
 	Route::group(['prefix' => "accounts"], function() {
 
@@ -24,10 +24,6 @@ Route::group(['prefix' => "api"], function() {
 
 	//Carts
 	Route::group(['prefix' => "cart"], function() {
-
-		Route::delete('{rowid}', 'Carts@remove');
-		Route::get('/', 'Carts@get');
-		Route::post('/', 'Carts@put');
 	});
 
 	//Categories
@@ -71,6 +67,14 @@ Route::group(['prefix' => "api"], function() {
 		Route::post('{id}/addresses', 'Addresses@create');
 		Route::get('{id}/addresses', 'Addresses@user');
 		Route::put('{id}/profile', 'Users@update');
+	});
+
+	//Transactions
+	Route::group(['prefix' => "transactions"], function() {
+
+		Route::get('completed', 'Transactions@completed');
+		Route::put('{ref}', 'Transactions@update');
+		Route::post('/', 'Transactions@create');
 	});
 
 	//Vendors

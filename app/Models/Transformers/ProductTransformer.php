@@ -48,7 +48,7 @@
 	    {
 	        return 
 	        [
-	        	'id' => (int) $product->id,
+	        	'id' => $product->id,
 	        	'name' => $product->name,
 	        	'description' => $product->description,
 	        	'price' => (int) $product->price,

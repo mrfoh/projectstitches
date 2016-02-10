@@ -215,8 +215,6 @@ return [
         'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory'=> Tymon\JWTAuth\Facades\JWTFactory::class,
         'Image'     => Intervention\Image\Facades\Image::class,
-        'Cart'      => Moltin\Cart\Facade::class,
-        'Hashids' => Vinkla\Hashids\Facades\Hashids::class
     ],
 
 ];
