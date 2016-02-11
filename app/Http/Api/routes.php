@@ -39,6 +39,7 @@ Route::group(['prefix' => "api"], function() {
 
 	//Orders
 	Route::group(['prefix' => "orders"], function() {
+		Route::get('/', 'Orders@create');
 	});
 
 	Route::any('media/upload', 'Media@upload');
