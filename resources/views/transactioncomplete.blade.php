@@ -35,6 +35,12 @@
 			color: #FFF;
 			border: none;
 		}
+
+		.container a {
+			display: block;
+			text-align: center;
+			text-decoration: none;
+		}
 	</style>
 </head>
 <body>
@@ -43,15 +49,7 @@
 		<p>Your payment is processing, <br>Please tap the button below to proceed.</p>
 		<p><strong>Transaction Reference: </strong> {{ $transaction->ref }}</p>
 		<p><strong>Transaction Amount: </strong> N{{ number_format($transaction->amount/100,2) }}</p>
-		<button id="done" class="button">Continue</button>
+		<a href="/mobile/close" class="button">Continue</a>
 	</div>
-
-	<script>
-		var doneButton = document.getElementById("done");
-		doneButton.addEventListener('click', function(event) {
-			console.log(window);
-			window.close();
-		});
-	</script>
 </body>
 </html>
