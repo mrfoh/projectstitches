@@ -2,6 +2,7 @@
 <html lang="en-gb">
 <head>
 	<title>Payment Proccessing</title>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 	<style type="text/css">
 		body {
 			background: #ddd;
@@ -48,6 +49,7 @@
 	<script>
 		var doneButton = document.getElementById("done");
 		doneButton.addEventListener('click', function(event) {
+			console.log(window);
 			window.close();
 		});
 	</script>
