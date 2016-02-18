@@ -39,7 +39,9 @@ Route::group(['prefix' => "api"], function() {
 
 	//Orders
 	Route::group(['prefix' => "orders"], function() {
-		Route::get('/', 'Orders@create');
+
+		Route::get('{no}', 'Orders@get');
+		Route::post('/', 'Orders@create');
 	});
 
 	Route::any('media/upload', 'Media@upload');
@@ -65,6 +67,7 @@ Route::group(['prefix' => "api"], function() {
 	//Users
 	Route::group(['prefix' => "users"], function() {
 
+		Route::get('{id}/orders', 'Orders@user');
 		Route::post('{id}/addresses', 'Addresses@create');
 		Route::get('{id}/addresses', 'Addresses@user');
 		Route::put('{id}/profile', 'Users@update');

@@ -10,6 +10,7 @@
 	use App\Repos\UserRepo as Users;
 	use App\Repos\ProductRepo;
 	use App\Repos\VendorRepo;
+	use App\Repos\VendorOrderRepo;
 	use App\Repos\VendorProfileRepo;
 	use App\Repos\Traits\Pageable;
 
@@ -21,12 +22,15 @@
 
 		protected $users;
 
-		public function __construct(VendorRepo $vendors, Users $users) {
+		protected $orders;
+
+		public function __construct(VendorRepo $vendors, Users $users, VendorOrderRepo $orders) {
 			//set middleware
 			$this->middleware('jwt.auth', ['except' => ['index']]);
 			//set repositories
 			$this->vendors = $vendors;
 			$this->users = $users;
+			$this->orders = $orders;
 		}
 
 		/**
@@ -57,7 +61,7 @@
 		public function products(Request $request, ProductRepo $products, $id) {
 
 			//models per page
-			$perPage = $request->input('perpage', 30);
+			$perPage = $request->input('per_page', 30);
 			//current page
 			$page = $request->input('page', 1);
 			//sort by
@@ -68,6 +72,28 @@
 			$models = $products->scopeQuery(function ($query) use ($id, $sortBy, $sortOrder) {
 				return $query->where('vendor_id','=', $id)
 							 ->orderBy($sortBy, $sortOrder);
+			})->all();
+
+			return $this->paginateData($models['data'], count($models['data']), $page, $perPage);
+		}
+
+		/**
+		* Retrieve vendors orders
+		 * @param Illuminate\Http\Request $request
+		 * @param integer $id
+		*/
+		public function orders(Request $request, $id) {
+			//models per page
+			$perPage = $request->input('per_page', 30);
+			//current page
+			$page = $request->input('page', 1);
+			//sort by
+			$sortBy = $request->input('sort_by', 'created_at');
+			//sort order
+			$sortOrder = $request->input('sort_order', 'desc');
+			//models
+			$models = $this->orders->scopeQuery(function($query) use ($id, $sortBy, $sortOrder) {
+				return $query->where('vendor_id','=', $id)->orderBy($sortBy, $sortOrder);
 			})->all();
 
 			return $this->paginateData($models['data'], count($models['data']), $page, $perPage);

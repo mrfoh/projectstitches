@@ -26,4 +26,11 @@
 
 	    	return $this->parserResult($models[0]);
 	    }
+
+	    public function associateOrder($ref, $id) {
+
+	    	$model = $this->model->whereRef($ref)->first();
+	    	$model->order_id = $id;
+	    	$model->save();
+	    }
 	}
