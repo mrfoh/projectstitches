@@ -43,12 +43,19 @@
 			if(is_null($id))
 			{
 				//models per page
-				$perPage = $request->input('perpage', 20);
+				$perPage = $request->input('per_page', 30);
 				//current page
 				$page = $request->input('page', 1);
+				//sort by
+				$sortBy = $request->input('sort_by','name');
+				//sort order
+				$sortOrder = $request->input('sort_order','asc');
 				//fetch models
-				$vendors = $this->vendors->all();
-				$data = $vendors['data'];
+				$models = $this->vendors->scopeQuery(function($query) use ($sortBy, $sortOrder) {
+					return $query->orderBy($sortBy, $sortOrder);
+				})->all();
+
+				$data = $models['data'];
 
 				return $this->paginateData($data, count($data), $page, $perPage);
 			}

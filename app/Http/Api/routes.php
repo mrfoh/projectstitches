@@ -67,9 +67,16 @@ Route::group(['prefix' => "api"], function() {
 	//Users
 	Route::group(['prefix' => "users"], function() {
 
+		Route::delete('{id}/measurements/{mid}', 'UserMeasurements@delete');
+		Route::put('{id}/measurements/{mid}', 'UserMeasurements@update');
+		Route::post('{id}/measurements', 'UserMeasurements@create');
+		Route::get('{id}/measurements', 'Users@measurements');
+
 		Route::get('{id}/orders', 'Orders@user');
+
 		Route::post('{id}/addresses', 'Addresses@create');
 		Route::get('{id}/addresses', 'Addresses@user');
+
 		Route::put('{id}/profile', 'Users@update');
 	});
 

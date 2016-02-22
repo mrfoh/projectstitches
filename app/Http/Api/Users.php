@@ -4,6 +4,7 @@
 	use App\Http\Controllers\Controller;
 	use Illuminate\Http\Request;
 	use App\Repos\UserRepo;
+	use App\Repos\UserMeasurementRepo;
 	use App\Http\Api\Traits\RequestUser;
 
 	class Users extends Controller {
@@ -22,6 +23,7 @@
 		* Update user model
 		* @param Illuminate\Http\Request $request
 		* @param integer $id
+		* @return json
 		**/
 		public function update(Request $request, $id) {
 			//validate request
@@ -40,5 +42,16 @@
 			$user = $this->repo->update($attrs, $id);
 
 			return $user;
+		}
+
+		/**
+		* Retrieve UserMeasurements models assoicated with User
+		* @param App\Repos\UserMeasurementRepo $measurements
+		* @param integer $id
+		* @return json
+		**/
+		public function measurements(UserMeasurementRepo $measurements, $id) {
+
+			return $measurements->user($id);
 		}
 	}
