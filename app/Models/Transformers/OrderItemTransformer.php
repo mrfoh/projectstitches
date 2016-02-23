@@ -38,11 +38,10 @@
 	        	'id' => $model->id,
 	        	'order_id' => $model->order_id,
 	        	'qty' => $model->qty,
-	        	'variant' => [
+	        	'variant' => ($model->variant) ? [
 	        		'name' => $model->variant->name,
 	        		'value' => $model->variant->value
-	        	],
-	        	'status' => $model->vendoritem->status,
+	        	] : NULL,
 	        	'created_at' => $model->created_at,
 	        	'updated_at' => $model->updated_at  
 	        ];

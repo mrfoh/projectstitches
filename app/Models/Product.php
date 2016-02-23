@@ -22,10 +22,14 @@
 		}
 
 		public function vendor() {
-			return $this->belongsTo('\App\Models\Vendor');
+			return $this->belongsTo('\App\Models\Vendor', 'vendor_id');
 		}
 
 		public function variants() {
 			return $this->hasMany('\App\Models\Variant');
+		}
+
+		public function items() {
+			return $this->belongsToMany('\App\Models\OrderItem');
 		}
 	}

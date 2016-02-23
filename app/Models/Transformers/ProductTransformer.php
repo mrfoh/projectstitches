@@ -3,8 +3,10 @@
 
 	use League\Fractal\TransformerAbstract;
 	use App\Models\Product;
+	use App\Models\Vendor;
 	use App\Models\Transformers\ImageTransformer;
 	use App\Models\Transformers\VariantTransformer;
+	use App\Models\Transformers\VendorTransformer;
 
 	class ProductTransformer extends TransformerAbstract {
 
@@ -37,6 +39,13 @@
 	    	$variants = $product->variants;
 
 	    	return $this->collection($variants, new VariantTransformer());
+	    }
+
+	    public function includeVendor(Product $product)
+	    {
+	    	$vendor = Vendor::find($product->vendor_id);
+
+	    	return $this->item($vendor, new VendorTransformer());
 	    }
 
 	    /**

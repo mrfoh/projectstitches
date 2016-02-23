@@ -19,7 +19,7 @@
 
 	    public function presenter()
 	    {
-	        return "Prettus\\Repository\\Presenter\\ModelFractalPresenter";
+	        return "App\\Models\\Presenters\\VendorPresenter";
 	    }
 
 	    private function profileAttrs(array $attrs, $vendor) {

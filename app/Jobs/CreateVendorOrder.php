@@ -60,24 +60,27 @@ class CreateVendorOrder extends Job implements ShouldQueue
     public function handle()
     {
         //get all vendors from cart items
-        $vendors = $this->getOrderVendors();
+        $vendorIds = $this->getOrderVendors();
         //vendor orders
-        $orders = [];
+        $vendorOrders = [];
         //vendor order iems
         $vendorOrderItems = [];
 
-        //Create a new order for each vendor
-        foreach($vendors as $key => $vendor) {
-            $orderTotal = $this->getOrderTotal($this->order->items, $vendor);
-            $vendorOrder = $this->repo->make($vendor, $this->order->id, $orderTotal);
-            $orders[] = $vendorOrder;
+        //Create vendor orders
+        foreach($vendorIds as $vendorId) 
+        {
+            $vendorOrders[] = [
+                'vendor_id' => $vendorId,
+                'order_id' => $this->order->id,
+                'total' => $this->getOrderTotal($this->order->items, $vendorId)
+            ];
         }
 
-        foreach($this->order->items as $item) {
+        $orders = $this->repo->makeMany($vendorOrders);
 
-            foreach($orders as $order) {
-
-                if($order->vendor_id == $item->vendor_id && $order->order_id == $item->order_id) {
+        foreach($orders as $key => $order) {
+            foreach($this->order->items as $item) {
+                if($item->vendor_id == $order->vendor_id) {
                     $vendorOrderItems[] = [
                         'vendor_order_id' => $order->id,
                         'order_item_id' => $item->id

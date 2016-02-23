@@ -26,27 +26,24 @@
 	        return "App\\Models\\Presenters\\VendorOrderPresenter";
 	    }
 
-	    private function generateOrderno() {
+	    private function generateOrderno($id) {
 
 	    	$timestamp = date("Ymdhia");
 	    	$prefix = "CH";
 
-	    	$rand = strtoupper(substr(uniqid(sha1(time())),0,5));
+	    	$rand = strtoupper(substr(uniqid(sha1($id)),0,5));
 
 	    	return strtoupper($prefix.$timestamp.$rand);
 	  	}
 
-	  	public function make($id, $order_id, $total) {
+	  	public function makeMany($orders) {
 
-	  		$this->model->order_id = $order_id;
-	  		$this->model->vendor_id = $id;
-	  		$this->model->no = $this->generateOrderno();
-	  		$this->model->total = $total;
+	  		foreach($orders as $order) {
+	  			$order['no'] = $this->generateOrderno($order['vendor_id']);
+	  			$data[] = $this->model->create($order);
+	  		}
 
-	  		$model = $this->model;
-	  		$model->save();
-
-	  		return $model;
+	  		return $data;
 	  	}
 
 	  	public function addItems($items) {
