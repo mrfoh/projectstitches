@@ -23,7 +23,7 @@
 	    }
 
 	    private function profileAttrs(array $attrs, $vendor) {
-	    	//phones
+
 	    	$attributes = [
 	    		'vendor_id' => $vendor->id,
 	    		'phones' => [

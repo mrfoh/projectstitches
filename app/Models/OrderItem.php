@@ -10,7 +10,7 @@
 		protected $fillable = ['order_id','product_id','vendor_id','qty','variant_id','measurement_id'];
 
 		public function order() {
-			return $this->belongsTo('\App\Models\Order', 'order_id');
+			return $this->belongsTo('App\Models\Order', 'order_id');
 		}
 
 		public function product() {
@@ -25,7 +25,11 @@
 			return $this->belongsTo('App\Models\Variant', 'variant_id');
 		}
 
+		public function measurement() {
+			return $this->belongsTo('App\Models\UserMeasurement', 'measurement_id');
+		}
+
 		public function vendoritem() {
-			return $this->hasOne('\App\Models\VendorOrderItem', 'order_item_id');
+			return $this->hasOne('App\Models\VendorOrderItem', 'order_item_id');
 		}
 	}

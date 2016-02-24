@@ -42,6 +42,11 @@
 	        		'name' => $model->variant->name,
 	        		'value' => $model->variant->value
 	        	] : NULL,
+	        	'measurement' => ($model->measurement) ? [
+	        		'id' => $model->measurement->id,
+	        		'name' => $model->measurement->name
+	        	] : NULL,
+	        	'vendoritem' => $model->vendoritem,
 	        	'created_at' => $model->created_at,
 	        	'updated_at' => $model->updated_at  
 	        ];

@@ -67,6 +67,7 @@ Route::group(['prefix' => "api"], function() {
 	//Users
 	Route::group(['prefix' => "users"], function() {
 
+		Route::get('{id}/measurements/{mid}', 'UserMeasurements@get');
 		Route::delete('{id}/measurements/{mid}', 'UserMeasurements@delete');
 		Route::put('{id}/measurements/{mid}', 'UserMeasurements@update');
 		Route::post('{id}/measurements', 'UserMeasurements@create');

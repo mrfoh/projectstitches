@@ -28,6 +28,11 @@
 			}
 		}
 
+		public function get($id, $mid) {
+
+			return $this->repo->find($mid);
+		}
+
 		public function create(Request $request, $id) {
 			//validate request
 			$this->validate($request, ['name' => 'required', 'measurements' => 'required|array']);
@@ -53,7 +58,7 @@
 
 			$measurement = $this->repo->skipPresenter()->find($mid);
 
-			$this->authorizeRequest($measurement->id);
+			$this->authorizeRequest($measurement->user_id);
 
 			$update = $this->repo->skipPresenter(false)->update($request->all(), $mid);
 
@@ -63,7 +68,7 @@
 		public function delete($id, $mid) {
 			$measurement = $this->repo->skipPresenter()->find($mid);
 
-			$this->authorizeRequest($measurement->id);
+			$this->authorizeRequest($measurement->user_id);
 
 			$this->repo->delete($mid);
 
