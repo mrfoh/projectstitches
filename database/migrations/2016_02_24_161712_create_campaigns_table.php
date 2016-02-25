@@ -12,7 +12,13 @@ class CreateCampaignsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('campaigns', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title');
+            $table->string('link')->nullable();
+            $table->boolean('active');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -22,6 +28,6 @@ class CreateCampaignsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('campaigns');
     }
 }

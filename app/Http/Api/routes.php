@@ -22,8 +22,13 @@ Route::group(['prefix' => "api"], function() {
 		Route::delete('{id}', 'Addresses@delete');
 	});
 
-	//Carts
-	Route::group(['prefix' => "cart"], function() {
+	//Campaigns
+	Route::group(['prefix' => "campaigns"], function() {
+
+		Route::post('{id}/images', 'Campaigns@upload');
+		Route::put('{id}', 'Campaigns@update');
+		Route::post('/', 'Campaigns@create');
+		Route::get('/', 'Campaigns@index');
 	});
 
 	//Categories
