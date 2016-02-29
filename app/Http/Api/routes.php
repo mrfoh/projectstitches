@@ -86,6 +86,8 @@ Route::group(['prefix' => "api"], function() {
 		Route::put('{id}/profile', 'Users@update');
 	});
 
+	Route::get('search', 'Search@query');
+
 	//Transactions
 	Route::group(['prefix' => "transactions"], function() {
 
