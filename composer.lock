@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2b5e68c7be691dba349c07cd1520eaaf",
-    "content-hash": "09143bd8e6b81f841a48e805e70a2a66",
+    "hash": "c0ea967907aed08530041fbc349dfc41",
+    "content-hash": "4f09d1bad1d6d5b46373126858eeeee0",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -217,48 +217,6 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "time": "2014-12-30 15:22:37"
-        },
-        {
-            "name": "davibennun/laravel-push-notification",
-            "version": "dev-laravel5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/davibennun/laravel-push-notification.git",
-                "reference": "b703b0fe02719a540139f5d26b73ac53a198b50d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/davibennun/laravel-push-notification/zipball/b703b0fe02719a540139f5d26b73ac53a198b50d",
-                "reference": "b703b0fe02719a540139f5d26b73ac53a198b50d",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "5.*",
-                "php": ">=5.3.0",
-                "sly/notification-pusher": "2.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Davibennun\\LaravelPushNotification": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "DaviBenNun",
-                    "email": "davi@andradenunes.org"
-                }
-            ],
-            "description": "Laravel package to send push notifications to mobile devices (apns, gcm)",
-            "keywords": [
-                "apns",
-                "gcm",
-                "laravel",
-                "notification",
-                "push"
-            ],
-            "time": "2015-06-15 13:11:17"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2325,68 +2283,6 @@
             "time": "2016-03-09 05:03:14"
         },
         {
-            "name": "sly/notification-pusher",
-            "version": "v2.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Ph3nol/NotificationPusher.git",
-                "reference": "6112841c4b679bc4f6cf01f6cf655e24794bc670"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Ph3nol/NotificationPusher/zipball/6112841c4b679bc4f6cf01f6cf655e24794bc670",
-                "reference": "6112841c4b679bc4f6cf01f6cf655e24794bc670",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "symfony/console": ">=2.3",
-                "symfony/options-resolver": ">=2.3",
-                "symfony/process": ">=2.3",
-                "zendframework/zendservice-apple-apns": "1.*",
-                "zendframework/zendservice-google-gcm": "1.*"
-            },
-            "require-dev": {
-                "atoum/atoum": "dev-master"
-            },
-            "type": "standalone",
-            "autoload": {
-                "psr-0": {
-                    "Sly": [
-                        "src/"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cédric Dugat",
-                    "email": "cedric@dugat.me"
-                },
-                {
-                    "name": "Contributors",
-                    "homepage": "https://github.com/Ph3nol/NotificationPusher/contributors"
-                }
-            ],
-            "description": "Standalone PHP library for easy devices notifications push.",
-            "homepage": "https://github.com/Ph3nol/NotificationPusher",
-            "keywords": [
-                "android",
-                "apns",
-                "apple",
-                "gcm",
-                "iphone",
-                "message",
-                "notification",
-                "push",
-                "pusher"
-            ],
-            "time": "2013-12-08 20:35:03"
-        },
-        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.1",
             "source": {
@@ -2798,60 +2694,6 @@
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
             "time": "2016-02-28 21:33:13"
-        },
-        {
-            "name": "symfony/options-resolver",
-            "version": "v3.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "bc7ee3ef3905f7c21fbed4e921cb39d6518b1300"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/bc7ee3ef3905f7c21fbed4e921cb39d6518b1300",
-                "reference": "bc7ee3ef3905f7c21fbed4e921cb39d6518b1300",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\OptionsResolver\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony OptionsResolver Component",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "config",
-                "configuration",
-                "options"
-            ],
-            "time": "2016-01-21 09:38:31"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -3844,49 +3686,6 @@
                 "zf2"
             ],
             "time": "2016-02-17 17:59:34"
-        },
-        {
-            "name": "zendframework/zendservice-apple-apns",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/ZendService_Apple_Apns.git",
-                "reference": "ee2c44ee833206c1eb95b2fb7be1e2335e7570eb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/ZendService_Apple_Apns/zipball/ee2c44ee833206c1eb95b2fb7be1e2335e7570eb",
-                "reference": "ee2c44ee833206c1eb95b2fb7be1e2335e7570eb",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "zendframework/zend-json": "~2.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "ZendService\\Apple\\Apns\\": "library/",
-                    "ZendService\\Apple\\Exception\\": "library/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "OOP Zend Framework 2 wrapper for Apple Push Notification Service",
-            "homepage": "http://packages.zendframework.com/",
-            "keywords": [
-                "apns",
-                "apple",
-                "notification",
-                "push",
-                "zf2"
-            ],
-            "time": "2015-12-09 22:55:07"
         },
         {
             "name": "zendframework/zendservice-google-gcm",
@@ -5001,6 +4800,68 @@
             "time": "2015-06-21 13:59:46"
         },
         {
+            "name": "sly/notification-pusher",
+            "version": "v2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Ph3nol/NotificationPusher.git",
+                "reference": "6112841c4b679bc4f6cf01f6cf655e24794bc670"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Ph3nol/NotificationPusher/zipball/6112841c4b679bc4f6cf01f6cf655e24794bc670",
+                "reference": "6112841c4b679bc4f6cf01f6cf655e24794bc670",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/console": ">=2.3",
+                "symfony/options-resolver": ">=2.3",
+                "symfony/process": ">=2.3",
+                "zendframework/zendservice-apple-apns": "1.*",
+                "zendframework/zendservice-google-gcm": "1.*"
+            },
+            "require-dev": {
+                "atoum/atoum": "dev-master"
+            },
+            "type": "standalone",
+            "autoload": {
+                "psr-0": {
+                    "Sly": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cédric Dugat",
+                    "email": "cedric@dugat.me"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/Ph3nol/NotificationPusher/contributors"
+                }
+            ],
+            "description": "Standalone PHP library for easy devices notifications push.",
+            "homepage": "https://github.com/Ph3nol/NotificationPusher",
+            "keywords": [
+                "android",
+                "apns",
+                "apple",
+                "gcm",
+                "iphone",
+                "message",
+                "notification",
+                "push",
+                "pusher"
+            ],
+            "time": "2013-12-08 20:35:03"
+        },
+        {
             "name": "symfony/css-selector",
             "version": "v3.0.3",
             "source": {
@@ -5110,6 +4971,60 @@
             "time": "2016-02-28 16:24:34"
         },
         {
+            "name": "symfony/options-resolver",
+            "version": "v3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/options-resolver.git",
+                "reference": "bc7ee3ef3905f7c21fbed4e921cb39d6518b1300"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/bc7ee3ef3905f7c21fbed4e921cb39d6518b1300",
+                "reference": "bc7ee3ef3905f7c21fbed4e921cb39d6518b1300",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\OptionsResolver\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony OptionsResolver Component",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "config",
+                "configuration",
+                "options"
+            ],
+            "time": "2016-01-21 09:38:31"
+        },
+        {
             "name": "symfony/yaml",
             "version": "v3.0.3",
             "source": {
@@ -5157,13 +5072,54 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2016-02-23 15:16:06"
+        },
+        {
+            "name": "zendframework/zendservice-apple-apns",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/ZendService_Apple_Apns.git",
+                "reference": "ee2c44ee833206c1eb95b2fb7be1e2335e7570eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/ZendService_Apple_Apns/zipball/ee2c44ee833206c1eb95b2fb7be1e2335e7570eb",
+                "reference": "ee2c44ee833206c1eb95b2fb7be1e2335e7570eb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "zendframework/zend-json": "~2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "ZendService\\Apple\\Apns\\": "library/",
+                    "ZendService\\Apple\\Exception\\": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "OOP Zend Framework 2 wrapper for Apple Push Notification Service",
+            "homepage": "http://packages.zendframework.com/",
+            "keywords": [
+                "apns",
+                "apple",
+                "notification",
+                "push",
+                "zf2"
+            ],
+            "time": "2015-12-09 22:55:07"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "davibennun/laravel-push-notification": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

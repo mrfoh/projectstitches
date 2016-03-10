@@ -1,7 +1,6 @@
 <?php
 namespace App\Listeners;
 
-use Push;
 use Log;
 use App\Models\Vendor;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -14,38 +13,12 @@ class VendorOrderEventListener implements ShouldQueue
     private function getDevices($users) {
         $devices = [];
 
-        foreach($users as $user) {
-            if(!is_null($user->gcm_token)) {
-                $devices[] = Push::Device($user->gcm_token, [
-                    'title' => "New Order",
-                    'body' => "New order recieved"
-                ]);
-            }
-        }
-
-        return $devices;
+        
     }
 
     private function sendNewOrderPushNotification($users, $order) {
 
-        $devices = $this->getDevices($users);
-
-        if(count($devices) < 1) {
-            return false;
-        }
-
-        $recievers = Push::DeviceCollection($devices);
-
-        $message = Push::Message('Order', array(
-            'data' => [
-                'id' => $order->id,
-                'no' => $order->no,
-                'total' => $order->total,
-                'placed_at' => $order->created_at
-            ]
-        ));
-
-        $collection = Push::app('appNameAndroid')->to($recievers)->send($message);
+        
     }
 
 	public function onOrderCreated($event) {

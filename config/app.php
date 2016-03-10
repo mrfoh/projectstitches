@@ -164,8 +164,6 @@ return [
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Vinkla\Hashids\HashidsServiceProvider::class,
-        Davibennun\LaravelPushNotification\LaravelPushNotificationServiceProvider::class,
-
     ],
 
     /*
@@ -214,7 +212,6 @@ return [
         'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory'=> Tymon\JWTAuth\Facades\JWTFactory::class,
         'Image'     => Intervention\Image\Facades\Image::class,
-        'Push' => Davibennun\LaravelPushNotification\Facades\PushNotification::class,
     ],
 
 ];
