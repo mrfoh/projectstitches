@@ -13,7 +13,7 @@ class VendorOrderEventListener implements ShouldQueue
 
 	public function onOrderCreated($event) {
 		$order = $event->order;
-        $vendor = Vendor::with('users')->find($id);
+        $vendor = Vendor::with('users')->find($order->vendor_id);
         Log::info('users', ['data' => $vendor->users]);
         /*send push notification
         Push::app('appNameAndroid')
