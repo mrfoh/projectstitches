@@ -33,7 +33,7 @@ class VendorOrderEventListener implements ShouldQueue
 
         $recievers = Push::DeviceCollection($devices);
 
-        $message = Push::message('New Order', [
+        $message = Push::Message('New Order', [
             'body' => "Order #".$order->no." Recieved",
             'tag' => "stitches.order"
         ]);
