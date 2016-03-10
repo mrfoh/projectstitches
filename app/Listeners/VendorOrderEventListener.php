@@ -52,7 +52,7 @@ class VendorOrderEventListener implements ShouldQueue
         Log::info('users', ['data' => $vendor->users]);
         
         //send push notification
-        $this->sendNewOrderPushNotification($users, $orders);
+        $this->sendNewOrderPushNotification($vendor->users, $orders);
 
         //dispatch email notification job
 	}
