@@ -3,14 +3,21 @@ namespace App\Listeners;
 
 use Push;
 use Log;
+use App\Models\Vendor;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class VendorOrderEventListener implements ShouldQueue
 {
+    use DispatchesJobs;
+
 	public function onOrderCreated($event) {
 		$order = $event->order;
+        $vendorUsers = $order->vendor->users;
 
-		Log::debug('Order Created Event Fired');
+        //send push notification
+
+        //dispatch email notification job
 	}
 
 	/**

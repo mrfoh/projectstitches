@@ -24,6 +24,7 @@
 
 			$claims = [
 				'vendor_id' => ($vendor) ? $user->vendors[0]->id : null,
+				'gcm_token' => (!is_null($user->gcm_token)) ? $user->gcm_token : null,
 				'device' => ($request->header('Request-device')) ? $request->header('Request-device') : 'not-set'
 			];
 
@@ -60,7 +61,7 @@
 	        			return response()->json(['error' => 'Incorrect email or password'], 403);
 	        		}
 
-	        		$vendor = $user->vendors[0];
+	        		$vendor = $user->vendors[0]->load('profile');
 	        		$token = JWTAuth::fromUser($user, $this->customClaims($user, $request, $vendorLogin));
 	        	}
 	        	else {
@@ -87,7 +88,7 @@
 			]);
 
 			//user credentials
-			$credentials = $request->only('first_name','last_name','email','password');
+			$credentials = $request->only('first_name','last_name','email','password','gcm_token');
 			$credentials['password'] = \Hash::make($credentials['password']);
 
 			//create user

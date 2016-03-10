@@ -62,4 +62,9 @@
 
 	    	return $this->parserResult($model);
 	    }
+
+	    public function users($id) {
+
+	    	return $this->model->with('users')->find($id);
+	    }
 	}
