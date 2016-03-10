@@ -21,7 +21,7 @@ class VendorOrderEventListener implements ShouldQueue
     public function subscribe($events)
     {
         $events->listen(
-            'App\Events\OrderCreated','App\Listeners\VendorOrderEventListener@onOrderCreated'
+            'App\Events\VendorOrderCreated','App\Listeners\VendorOrderEventListener@onOrderCreated'
         );
 
     }
