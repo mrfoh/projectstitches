@@ -16,7 +16,10 @@ class VendorOrderEventListener implements ShouldQueue
 
         foreach($users as $user) {
             if(!is_null($user->gcm_token)) {
-                $devices[] = Push::device($user->gcm_token);
+                $devices[] = Push::Device($user->gcm_token, [
+                    'title' => "New Order",
+                    'body' => "New order recieved"
+                ]);
             }
         }
 
@@ -33,17 +36,13 @@ class VendorOrderEventListener implements ShouldQueue
 
         $recievers = Push::DeviceCollection($devices);
 
-        $message = Push::Message('New Order', array(
-            'badge' => 1,
-            'actionLocKey' => 'Action button title!',
-            'locKey' => 'localized key',
-            'locArgs' => array(
-                'localized args',
-                'localized args',
-            ),
-            'custom' => array('custom data' => array(
-                'we' => 'want', 'send to app'
-            ))
+        $message = Push::Message('Order', array(
+            'data' => [
+                'id' => $order->id,
+                'no' => $order->no,
+                'total' => $order->total,
+                'placed_at' => $order->created_at
+            ]
         ));
 
         $collection = Push::app('appNameAndroid')->to($recievers)->send($message);
