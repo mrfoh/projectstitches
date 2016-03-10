@@ -33,13 +33,9 @@ class VendorOrderEventListener implements ShouldQueue
 
         $recievers = Push::DeviceCollection($devices);
 
-        $message = Push::message('Order Received', [
-            'order' => [
-                'no' => $order->no,
-                'id' => $order->id,
-                'placed_at' => $order->created_at,
-                'total' => $order->total
-            ]
+        $message = Push::message('New Order', [
+            'body' => "Order #".$order->no." Recieved",
+            'tag' => "stitches.order"
         ]);
 
         $collection = Push::app('appNameAndroid')->to($recievers)->send($message);
