@@ -20,7 +20,7 @@ class VendorOrderEventListener implements ShouldQueue
             }
         }
 
-        return;
+        return $devices;
     }
 
     private function sendNewOrderPushNotification($users, $order) {
@@ -52,7 +52,7 @@ class VendorOrderEventListener implements ShouldQueue
         Log::info('users', ['data' => $vendor->users]);
         
         //send push notification
-        $this->sendNewOrderPushNotification($vendor->users, $orders);
+        $this->sendNewOrderPushNotification($vendor->users, $order);
 
         //dispatch email notification job
 	}
