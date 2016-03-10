@@ -16,6 +16,9 @@ class VendorOrderEventListener implements ShouldQueue
         $vendorUsers = $order->vendor->users;
 
         //send push notification
+        Push::app('appNameAndroid')
+            ->to($vendorUsers[0]->gcm_token)
+            ->send("Order Recieved");
 
         //dispatch email notification job
 	}
