@@ -16,10 +16,7 @@
         "gloudemans/shoppingcart": "~1.3",
         "vinkla/hashids": "^2.2",
         "doctrine/dbal": "^2.5",
-        "moltin/currency": "dev-master",
-        "moltin/tax": "dev-master",
-        "moltin/cart": "dev-master",
-        "moltin/laravel-cart": "dev-master"
+        "davibennun/laravel-push-notification": "dev-laravel5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

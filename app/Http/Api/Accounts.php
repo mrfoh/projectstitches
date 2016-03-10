@@ -60,7 +60,7 @@
 	        			return response()->json(['error' => 'Incorrect email or password'], 403);
 	        		}
 
-	        		$vendor = $user->vendors[0]->transform();
+	        		$vendor = $user->vendors[0];
 	        		$token = JWTAuth::fromUser($user, $this->customClaims($user, $request, $vendorLogin));
 	        	}
 	        	else {
