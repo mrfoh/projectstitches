@@ -2,6 +2,7 @@
 	namespace App\Models;
 
 	use Illuminate\Database\Eloquent\Model;
+	use App\Events\VendorOrderCreated;
 
 	class VendorOrder extends Model {
 
@@ -19,5 +20,14 @@
 
 		public function items() {
 			return $this->hasMany('\App\Models\VendorOrderItem', 'vendor_order_id');
+		}
+
+		protected static function boot() 
+		{
+			parent::boot();
+
+			static::created(function($order) {
+				event(new VendorOrderCreated($order));
+			});
 		}
 	}

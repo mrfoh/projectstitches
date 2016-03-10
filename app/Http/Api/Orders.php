@@ -82,6 +82,8 @@
 				$this->transactions->associateOrder($ref, $order['data']['id']);
 			}
 
+			//fire OrderCreated event
+			
 			return $order;
 		}
 	}

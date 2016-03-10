@@ -31,7 +31,7 @@
 	    	$timestamp = date("Ymdhia");
 	    	$prefix = "CH";
 
-	    	$rand = strtoupper(substr(uniqid(sha1($id)),0,5));
+	    	$rand = strtoupper(substr(uniqid(sha1(time().$id)),0,5));
 
 	    	return strtoupper($prefix.$timestamp.$rand);
 	  	}
