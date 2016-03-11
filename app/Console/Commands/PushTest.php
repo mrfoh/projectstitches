@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Utils\GCMPush;
+use PHP_GCM\Message;
+use PHP_GCM\Result;
+use PHP_GCM\Sender;
 
 class PushTest extends Command
 {
@@ -38,13 +40,14 @@ class PushTest extends Command
      */
     public function handle()
     {
-        $gcm = new GCMPush();
-        $gcm->addRegistrationId('APA91bE-EjWoVrM05LSzkWj9EjDJeOOVbwl9-4TB0pjbwXtfSRyL7QjUDC7zkJIr3bWzdvRyiBPhY8JlliYeuJ_Pky9s_MfQZppa9zYEaXHCfHlJ_QdX0Db9HUaPSxi0Jz0Cery1lORW');
-        $gcm->addData('title', 'Test Notification');
-        $gcm->addData('message', 'This is a test notification');
-        $gcm->setCollapseKey('testing');
-        $response = $gcm->push("vendor");
+        $deviceRegistrationId = "APA91bE-EjWoVrM05LSzkWj9EjDJeOOVbwl9-4TB0pjbwXtfSRyL7QjUDC7zkJIr3bWzdvRyiBPhY8JlliYeuJ_Pky9s_MfQZppa9zYEaXHCfHlJ_QdX0Db9HUaPSxi0Jz0Cery1lORW";
+        $sender = new Sender(config('push.gcm_key'));
+        $message = new Message('testing', [
+            'id' => 1,
+            'no' => "lglsngslnkanglw"
+        ]);
 
-        dd($response);      
+        $result = $sender->send($message, $deviceRegistrationId, 3);
+        dd($result);
     }
 }
