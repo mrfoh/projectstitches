@@ -1,8 +1,21 @@
 <?php
 
 return [
-	'gcm_key' => env('GCM_APIKEY'),
-	'vendor_package' => 'co.reftek.stitchesvendor',
-	'market_package' => 'col.reftek.stitchesmarket',
-	'ttl' => 600,
+
+    'appNameIOS'     => [
+        'environment' =>'development',
+        'certificate' =>'/path/to/certificate.pem',
+        'passPhrase'  =>'password',
+        'service'     =>'apns'
+    ],
+    'co.reftek.stitchesvendor' => [
+        'environment' =>'production',
+        'apiKey'      =>env('GCM_KEY'),
+        'service'     =>'gcm'
+    ],
+    'co.reftek.stitchesmarket' => [
+        'environment' =>'production',
+        'apiKey'      =>env('GCM_KEY'),
+        'service'     =>'gcm'
+    ]
 ];

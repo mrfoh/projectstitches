@@ -8,14 +8,9 @@ return [
         'passPhrase'  =>'password',
         'service'     =>'apns'
     ],
-    'co.reftek.stitchesvendor' => [
+    'stitches' => [
         'environment' =>'production',
-        'apiKey'      =>env('GCM_KEY'),
+        'apiKey'      => env('GCM_APIKEY'),
         'service'     =>'gcm'
     ],
-    'co.reftek.stitchesmarket' => [
-        'environment' =>'production',
-        'apiKey'      =>env('GCM_KEY'),
-        'service'     =>'gcm'
-    ]
 ];

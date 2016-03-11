@@ -28,11 +28,15 @@ class VendorOrderEventListener implements ShouldQueue
         $recievers = PushNotification::DeviceCollection($this->getDevices($users));
 
         $message = PushNotification::Message('Order Recieved', [
-            'title' => 'Testing',
-            'message' => 'lol'
+            'title' => 'Stitches Vendor',
+            'data' => [
+                'id' => $order->id,
+                'no' => $order->no,
+                'total' => $order->total
+            ]
         ]);
 
-        $collection = PushNotification::app('co.reftek.stitchesvendor')->to($recievers)->send($message);
+        $collection = PushNotification::app('stitches')->to($recievers)->send($message);
 
         // get response for each device push
         foreach ($collection->pushManager as $push) {

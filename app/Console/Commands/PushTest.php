@@ -3,9 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use PHP_GCM\Message;
-use PHP_GCM\Result;
-use PHP_GCM\Sender;
+use PushNotification;
 
 class PushTest extends Command
 {
@@ -41,13 +39,18 @@ class PushTest extends Command
     public function handle()
     {
         $deviceRegistrationId = "APA91bE-EjWoVrM05LSzkWj9EjDJeOOVbwl9-4TB0pjbwXtfSRyL7QjUDC7zkJIr3bWzdvRyiBPhY8JlliYeuJ_Pky9s_MfQZppa9zYEaXHCfHlJ_QdX0Db9HUaPSxi0Jz0Cery1lORW";
-        $sender = new Sender(config('push.gcm_key'));
-        $message = new Message('testing', [
-            'id' => 1,
-            'no' => "lglsngslnkanglw"
+        
+        $devices = PushNotification::DeviceCollection([
+            PushNotification::Device($deviceRegistrationId)
         ]);
 
-        $result = $sender->send($message, $deviceRegistrationId, 3);
-        dd($result);
+        $message = PushNotification::Message('Order recieved', [
+            'title' => 'Stitches Vendor',
+            'data' => [
+                'no' => "kngkaglkngla"
+            ]
+        ]);
+
+        $collection = PushNotification::app('stitches')->to($devices)->send($message);
     }
 }
