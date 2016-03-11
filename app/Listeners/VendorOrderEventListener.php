@@ -25,7 +25,7 @@ class VendorOrderEventListener implements ShouldQueue
 
     private function sendNewOrderPushNotification($users, $order) {
 
-        $recievers = $this->getDevices();
+        $recievers = PushNotification::DeviceCollection($this->getDevices($users));
 
         $message = PushNotification::Message('Order Recieved', [
             'title' => 'Testing',
