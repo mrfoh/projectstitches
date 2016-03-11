@@ -8,9 +8,9 @@ return array(
         'passPhrase'  =>'password',
         'service'     =>'apns'
     ),
-    'appNameAndroid' => array(
+    'co.reftek.stitchesvendor' => array(
         'environment' =>'production',
-        'apiKey'      =>'yourAPIKey',
+        'apiKey'      =>env('GCM_KEY'),
         'service'     =>'gcm'
     )
 
