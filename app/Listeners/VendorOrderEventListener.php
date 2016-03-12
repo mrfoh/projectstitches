@@ -15,8 +15,8 @@ class VendorOrderEventListener implements ShouldQueue
         $devices = [];
 
         foreach($users as $user) {
-            if(!is_null($user->gcm_token)) {
-                $devices[] = PushNotification::Device($user->gcm_token);
+            if(!is_null($user->vendor_token)) {
+                $devices[] = PushNotification::Device($user->vendor_token);
             }
         }
 
@@ -55,6 +55,24 @@ class VendorOrderEventListener implements ShouldQueue
         //dispatch email notification job
 	}
 
+    public function onOrderStatusUpdate($event) {
+        $order = $event->order;
+        $user = $order->order->user;
+
+        if($user->client_token) {
+            $message = PushNotification::Message('Order status updated: '.$order->status, [
+                'title' => 'Stitches Market',
+                'data' => [
+                    'id' => $order->id,
+                    'no' => $order->no,
+                    'total' => $order->total
+                ]
+            ]);
+
+            PushNotification::app('stitches')->to($user->client_token)->send($message);
+        }
+    }
+
 	/**
      * Register the listeners for the subscriber.
      *
@@ -63,8 +81,13 @@ class VendorOrderEventListener implements ShouldQueue
     public function subscribe($events)
     {
         $events->listen(
-            'App\Events\VendorOrderCreated','App\Listeners\VendorOrderEventListener@onOrderCreated'
+            'App\Events\VendorOrderCreated',
+            'App\Listeners\VendorOrderEventListener@onOrderCreated'
         );
 
+        $events->listen(
+            'App\Events\OrderStatusUpdate',
+            'App\Listeners\VendorOrderEventListener@onOrderStatusUpdate'
+        );
     }
 }

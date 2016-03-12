@@ -21,6 +21,7 @@
 	        		'price' => $model->item->product->price
 	        	],
 	        	'qty' => $model->item->qty,
+	        	'status' => $model->status,
 	        	'variant' => $model->item->variant,
 	        	'created_at' => $model->created_at,
 	        	'updated_at' => $model->updated_at,  

@@ -44,7 +44,7 @@ class PushTest extends Command
             PushNotification::Device($deviceRegistrationId)
         ]);
 
-        $message = PushNotification::Message('Order recieved', [
+        $message = PushNotification::Message('Order recieved jbkabgjksa kjabkjbajkbgkajbkjbakjbgkj', [
             'title' => 'Stitches Vendor',
             'data' => [
                 'no' => "kngkaglkngla"

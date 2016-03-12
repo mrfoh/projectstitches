@@ -3,12 +3,21 @@
 
 	use Illuminate\Database\Eloquent\Model;
 	use App\Events\VendorOrderCreated;
+	use App\Events\OrderStatusUpdate;
 
 	class VendorOrder extends Model {
 
 		protected $table = "vendor_orders";
 
 		protected $fillable = ['vendor_id','order_id','no','total','status'];
+
+		protected $with = ['items','order'];
+
+		public function getCreatedAtAttribute($value)
+	    {
+	        $value = date('U', strtotime($value));
+	        return $value * 1000;
+	    }
 
 		public function vendor() {
 			return $this->belongsTo('\App\Models\Vendor', 'vendor_id');
@@ -28,6 +37,11 @@
 
 			static::created(function($order) {
 				event(new VendorOrderCreated($order));
+			});
+
+			static::updated(function($order) {
+				if($order->status != "pending")
+					event(new OrderStatusUpdate($order));
 			});
 		}
 	}

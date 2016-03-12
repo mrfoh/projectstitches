@@ -34,13 +34,18 @@
 	     */
 		public function transform(VendorOrder $model)
 	    {
-	        return 
-	        [
+	    	$methods = [
+	    		'pod' => 'Pay on delivery',
+	    		'card' => 'Debit/Credit Card'
+	    	];
+
+	        return [
 	        	'id' => $model->id,
 	        	'no' => $model->no,
 	        	'order' => [
 	        		'id' => $model->order->id,
 	        		'order_no' => $model->order->order_no,
+	        		'total' => $model->order->total, 
 	        		'user' => [
 	        			'id' => $model->order->user->id,
 	        			'name' => $model->order->user->first_name." ".$model->order->user->last_name,
@@ -51,10 +56,11 @@
 	        				'contact_name' => $model->order->address->contact_name
 	        			]
 	        		],
-	        		'paid' => $model->order->paid
+	        		'paid' => (bool) $model->order->paid,
+	        		'method' => $methods[$model->order->method]
 	        	],
+	        	'status' => $model->status,
 	        	'created_at' => $model->created_at,
-	        	'updated_at' => $model->updated_at  
 	        ];
 	    }
 	}

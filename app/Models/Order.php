@@ -10,6 +10,8 @@
 
 		protected $fillable = ['order_no', 'user_id', 'user_address_id', 'total', 'paid', 'method'];
 
+		protected $with = ['user', 'address'];
+
 		public function getCreatedAtAttribute($value)
 	    {
 	        $value = date('U', strtotime($value));
