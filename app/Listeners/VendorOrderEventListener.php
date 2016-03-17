@@ -82,11 +82,9 @@ class VendorOrderEventListener implements ShouldQueue
             $message = PushNotification::Message('Order item status updated to: '.$item->status, [
                 'title' => 'Stitches Market',
                 'data' => [
-                    'order' => [
-                        'id' => $order->order->id,
-                        'no' => $order->order->order_no,
-                        'total' => $order->order->total
-                    ]
+                    'id' => $order->order->id,
+                    'no' => $order->order->order_no,
+                    'total' => $order->order->total
                 ]
             ]);
 
