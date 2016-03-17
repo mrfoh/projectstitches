@@ -73,6 +73,27 @@ class VendorOrderEventListener implements ShouldQueue
         }
     }
 
+    public function onOrderItemStatusUpdate($event) {
+        $item = $event->item;
+        $order = $item->order;
+        $user = $order->order->user;
+
+        if($user->client_token) {
+            $message = PushNotification::Message('Order item status updated to: '.$item->status, [
+                'title' => 'Stitches Market',
+                'data' => [
+                    'order' => [
+                        'id' => $order->id,
+                        'no' => $order->no,
+                        'total' => $order->total
+                    ]
+                ]
+            ]);
+
+            PushNotification::app('stitches')->to($user->client_token)->send($message);
+        }
+    }
+
 	/**
      * Register the listeners for the subscriber.
      *
@@ -88,6 +109,11 @@ class VendorOrderEventListener implements ShouldQueue
         $events->listen(
             'App\Events\OrderStatusUpdate',
             'App\Listeners\VendorOrderEventListener@onOrderStatusUpdate'
+        );
+
+        $events->listen(
+            'App\Events\OrderItemStatusUpdate',
+            'App\Listeners\VendorOrderEventListener@onOrderItemStatusUpdate'
         );
     }
 }

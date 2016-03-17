@@ -98,9 +98,10 @@ Route::group(['prefix' => "api"], function() {
 
 	//Vendors
 	Route::group(['prefix' => "vendors"], function() {
-
+		Route::put('{id}/orders/{oid}/items/{iid}', 'VendorOrders@updateItem');
 		Route::put('{id}/orders/{oid}', 'VendorOrders@update');
 		Route::get('{id}/orders/{oid}', 'VendorOrders@get');
+
 		Route::get('{id}/orders', 'Vendors@orders');
 		Route::get('{id}/products', 'Vendors@products');
 		Route::post('{id}/logo', 'Vendors@uploadLogo');

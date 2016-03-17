@@ -24,7 +24,7 @@
 
 			$claims = [
 				'vendor_id' => ($vendor) ? $user->vendors[0]->id : null,
-				'gcm_token' => (!is_null($user->gcm_token)) ? $user->gcm_token : null,
+				'vendor_token' => (!is_null($user->vendor_token)) ? $user->vendor_token : null,
 				'device' => ($request->header('Request-device')) ? $request->header('Request-device') : 'not-set'
 			];
 
