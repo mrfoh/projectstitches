@@ -83,9 +83,9 @@ class VendorOrderEventListener implements ShouldQueue
                 'title' => 'Stitches Market',
                 'data' => [
                     'order' => [
-                        'id' => $order->id,
-                        'no' => $order->no,
-                        'total' => $order->total
+                        'id' => $order->order->id,
+                        'no' => $order->order->no,
+                        'total' => $order->order->total
                     ]
                 ]
             ]);
